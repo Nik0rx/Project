@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diego — Anécdotas de un Lector</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- PORTADA -->
+  <section id="portada" class="scene scene--cover">
+    <div class="cover__bg-lines"></div>
+    <div class="cover__content">
+      <span class="cover__eyebrow">Una novela en fragmentos</span>
+      <h1 class="cover__title">Diego</h1>
+      <p class="cover__subtitle">Anécdotas de un Lector</p>
+      <div class="cover__divider"></div>
+      <p class="cover__blurb">
+        Un joven escritor, un amigo insólito, libros robados,<br />
+        declaraciones fallidas y la pregunta que no cesa:<br />
+        <em>¿para qué sirve la literatura?</em>
+      </p>
+      <button class="btn-leer" onclick="irCapitulo(1)">Comenzar a leer →</button>
+    </div>
+    <div class="cover__numero-pagina">I</div>
+  </section>
+
+  <!-- NAV LATERAL -->
+  <nav id="nav-lateral" class="nav-lateral" aria-label="Capítulos">
+    <div class="nav-lateral__titulo">Capítulos</div>
+    <ul class="nav-lateral__lista" id="nav-lista"></ul>
+  </nav>
+
+  <!-- BARRA PROGRESO -->
+  <div id="progreso-barra" class="progreso-barra">
+    <div id="progreso-fill" class="progreso-fill"></div>
+  </div>
+
+  <!-- CONTENEDOR DE CAPÍTULOS -->
+  <main id="libro" class="libro">
+    <!-- Los capítulos se inyectan via JS -->
+  </main>
+
+  <!-- BOTONES DE NAVEGACIÓN -->
+  <div id="nav-capitulos" class="nav-capitulos" style="display:none;">
+    <button id="btn-prev" class="nav-btn" onclick="cambiarCapitulo(-1)">← Anterior</button>
+    <span id="nav-indicador" class="nav-indicador"></span>
+    <button id="btn-next" class="nav-btn" onclick="cambiarCapitulo(1)">Siguiente →</button>
+  </div>
+
+  <!-- PANEL DE NOTAS DEL LECTOR -->
+  <aside id="panel-notas" class="panel-notas" aria-hidden="true">
+    <div class="panel-notas__header">
+      <span>📝 Mis notas</span>
+      <button class="panel-notas__cerrar" onclick="toggleNotas()">✕</button>
+    </div>
+    <textarea id="notas-texto" class="panel-notas__area" placeholder="Escribe tus reflexiones aquí..."></textarea>
+    <button class="panel-notas__guardar" onclick="guardarNotas()">Guardar nota</button>
+    <div id="notas-guardadas" class="notas-guardadas"></div>
+  </aside>
+
+  <!-- FAB NOTAS -->
+  <button id="fab-notas" class="fab-notas" onclick="toggleNotas()" title="Mis notas">📓</button>
+
+  <!-- MODAL CITA -->
+  <div id="modal-cita" class="modal-cita" style="display:none;" onclick="cerrarModal()">
+    <div class="modal-cita__inner" onclick="event.stopPropagation()">
+      <p id="modal-cita-texto" class="modal-cita__texto"></p>
+      <span class="modal-cita__autor" id="modal-cita-autor"></span>
+      <button onclick="cerrarModal()">Cerrar</button>
+    </div>
+  </div>
+
+  <script src="js/capitulos.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
